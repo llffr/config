@@ -1,0 +1,44 @@
+#!/bin/bash
+
+compile_run_java() {
+    if [ -z "$1" ]; then
+        echo "Uso: compile_run_java <nombre_del_archivo_sin_extension>"
+        return 1
+    fi
+
+    local filename="$1"
+    if [[ "$filename" == *.java ]]; then
+        filename="${filename%.java}"
+    fi
+
+    # echo "Compilando ${filename}.java..."
+    # start_time=$(date +%s)
+
+    javac "${filename}.java"
+    compile_status=$?
+
+    end_time=$(date +%s)
+    # compile_time=$((end_time - start_time))
+
+    if [ $compile_status -eq 0 ]; then
+        # echo "Compilación exitosa en ${compile_time} segundos."
+        # echo "Ejecutando ${filename}..."
+        echo "====================="
+        java "${filename}"
+        execution_status=$?
+
+        if [ $execution_status -ne 0 ]; then
+            echo "Error: La ejecución falló."
+            return 1
+        fi
+
+        # echo "Eliminando archivos .class..."
+        rm *.class
+    else
+        echo "Error: La compilación falló."
+        return 1
+    fi
+}
+
+# Llamar a la función con el primer argumento
+compile_run_java "$1"
