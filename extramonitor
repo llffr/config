@@ -1,0 +1,11 @@
+#!/bin/sh
+
+intern="eDP-1"
+extern="HDMI-1"
+
+case "$1" in
+	"disconnect") xrandr --output "$extern" --off --output "$intern" --auto ;;
+	"extra") xrandr --output "$extern" --set audio force-dv1  --mode 1280*720 && xrandr --output "$intern" --auto --output "$extern" --same-as "$intern" ;;
+	"duplicate") xrandr --output "$extern" --set audio force-dv1 --mode 1280x720 && xrandr --output "$intern" --auto --output "$extern" --same-as "$intern" ;;
+	*) notify-send "Multi Monitor" "UNKNOWN OPERATION" ;;
+esac

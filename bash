@@ -11,5 +11,3 @@ alias wifi-off="nmcli radio wifi off"
 alias bluetooth-on="sudo systemctl start bluetooth.service"
 alias red-status="nmcli dev status"
 alias logout="kill -9 -1"
-
-#export PATH="$PATH:/opt/nvim/"

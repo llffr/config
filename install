@@ -1,0 +1,8 @@
+#!/bin/bash
+sudo apt-get install build-essential libgl1-mesa-dev libx11-dev libxext-dev libxrandr-dev libglu1-mesa-dev freeglut3-dev
+
+cat bash >> $home/.bashrc
+cp -a nvim/ $home/.config/
+cp -a awesome/ $home/.config/
+sudo cp jcc /usr/local/bin/ 
+cd coomer && g++ coomer.cpp -lgl -lglu -lx11 -lxrandr -lxext -o coomer && sudo cp -r coomer /usr/local/bin/
