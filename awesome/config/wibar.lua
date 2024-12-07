@@ -8,7 +8,6 @@ local brightness_widget = require("widgets.brightness-widget.brightness")
 local calendar_widget = require("widgets.calendar")
 local temperature_widget = require("widgets.temperature")
 local net_widgets = require("net_widgets")
-local fs_widget = require("widgets.storage")
 local batteryarc_widget = require("widgets.battery-arc.battery")
 --local cpu_widget = require("widgets.cpu.cpu")
 
@@ -164,7 +163,6 @@ awful.screen.connect_for_each_screen(function(s)
 			-- cpu_widget(),
 			net_internet,
 			temperature_widget,
-			fs_widget,
 			volume_widget({
 				card = 0,
 				step = 2,
